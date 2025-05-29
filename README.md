@@ -4,7 +4,6 @@
 
 <h2> Qompass AI Network Tooling </h2>
 
-
 ![Repository Views](https://komarev.com/ghpvc/?username=qompassai-network)
 ![GitHub all releases](https://img.shields.io/github/downloads/qompassai/network/total?style=flat-square)
 
@@ -35,6 +34,80 @@
   <a href="./LICENSE-QCDA"><img src="https://img.shields.io/badge/license-Q--CDA-lightgrey.svg" alt="License: Q-CDA"></a>
 </p>
 
+### How do get this going with one copy/paste
+** Recommend to read the script in scripts/nix.sh first THEN copy and paste the below**
+
+```bash
+git clone https://github.com/qompassai/network.git
+cd network
+chmod +x scripts/nix.sh
+./scripts/nix.sh
+```
+
+### 2. That's It!
+
+The script automatically:
+- ✅ **Installs Nix** (if not already installed)
+- ✅ **Enables flakes and experimental features**
+- ✅ **Configures optimal settings** (caching, substituters, etc.)
+- ✅ **Tests all tools** to verify everything works
+- ✅ **Drops you into the development environment**
+
+---
+
+## 🛠️ What This Gives You
+
+### 🔐 **Encryption Tools**
+- **`rage`** - Modern file encryption
+- **`age`** - Original age encryption  
+- **`openssl`** - Cryptography toolkit
+
+### 🔨 **Hash Tools**
+- **`hash-utils blake3 <file>`** - BLAKE3 hashing
+- **`hash-utils sha3-256 <file>`** - SHA3-256 hashing
+- **`hash-utils sha512 <file>`** - SHA-512 hashing
+
+### 🌐 **Network Tools**
+- **`networkmanager`** - Network management
+- **`unbound`** - Secure DNS
+- **`nmap`** - Network scanning
+- **`tcpdump`** - Network analysis
+
+### Build just the hash utilities
+
+```
+nix build .#hash-utils
+./result/bin/hash-utils blake3 somefile.txt
+```
+Build network setup script
+```
+nix build .#networkmanager-setup
+./result/bin/networkmanager-setup
+```
+
+### Run Tools Without Installing
+
+Run tools directly from GitHub
+```
+nix run github:qompassai/network#hash-utils blake3 myfile.txt
+```
+
+### Use Again Later
+
+```bash
+cd /path/to/qompassai/network
+nix develop
+```
+---
+
+## 💡 Examples
+
+### **Encrypt a file:**
+
+Generate a key and encrypt
+
+rage-keygen -o mykey.txt
+rage -e -i mykey.txt -o secret.age plaintext.txt
 
 <details id="Contact">
   <summary><strong>Contact Qompass AI</strong></summary>

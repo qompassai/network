@@ -30,7 +30,6 @@ fi
 
 mkdir -p "$USER_HOME/.config/nix"
 
-# Create backup if config exists
 if [ -f "$USER_HOME/.config/nix/nix.conf" ]; then
     BACKUP_FILE="$USER_HOME/.config/nix/nix.conf.backup.$(date +%Y%m%d-%H%M%S)"
     cp "$USER_HOME/.config/nix/nix.conf" "$BACKUP_FILE"
