@@ -122,8 +122,10 @@ rage-keygen -o mykey.txt
 rage -e -i mykey.txt -o secret.age plaintext.txt
 ```
 
-\*\* The tools here are presented for educational purposes **ONLY- Have Fun and be
-safe!**
+\*\* The tools here are presented for educational purposes **ONLY**. Have Fun and be
+safe!
+
+______________________________________________________________________
 
 <details id="Contact">
   <summary><strong>Contact Qompass AI</strong></summary>
