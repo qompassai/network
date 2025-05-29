@@ -38,7 +38,7 @@
 
 ### How do get this going with one copy/paste
 
-\*\* Recommend to read the script in scripts/nix.sh first THEN copy and paste the below\*\*
+\*\* Recommend to read the script in scripts/nix.sh **FIRST** and THEN copy and paste the below\*\*
 
 ```bash
 git clone https://github.com/qompassai/network.git
