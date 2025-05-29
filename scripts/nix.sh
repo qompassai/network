@@ -43,7 +43,6 @@ cat > "$USER_HOME/.config/nix/nix.conf" << EOF
 
 auto-optimise-store = true
 experimental-features = nix-command flakes
-extra-experimental-features = ca-derivations
 fallback = true
 flake-registry = https://github.com/NixOS/flake-registry/raw/master/flake-registry.json
 gc-keep-outputs = true
