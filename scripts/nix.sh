@@ -16,7 +16,7 @@ MAX_JOBS=$((SYSTEM_CORES > 8 ? 8 : SYSTEM_CORES))
 echo "🔧 Setting up for user: $CURRENT_USER"
 echo "🖥️  System cores: $SYSTEM_CORES, Max jobs: $MAX_JOBS"
 
-if command -v nix &> /dev/null; then
+if command -v nix &>/dev/null; then
     echo "✅ Nix is already installed: $(nix --version)"
 else
     echo "📦 Installing Nix package manager..."
@@ -37,7 +37,7 @@ if [ -f "$USER_HOME/.config/nix/nix.conf" ]; then
 fi
 
 echo "📝 Creating Nix configuration..."
-cat > "$USER_HOME/.config/nix/nix.conf" << EOF
+cat >"$USER_HOME/.config/nix/nix.conf" <<EOF
 # ~/.config/nix/nix.conf
 # Auto-generated for $CURRENT_USER on $(date)
 
@@ -122,4 +122,3 @@ echo "📋 Configuration summary:"
 echo "   User: $CURRENT_USER"
 echo "   Config: $USER_HOME/.config/nix/nix.conf"
 echo "   Max jobs: $MAX_JOBS (based on $SYSTEM_CORES cores)"
-
