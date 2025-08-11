@@ -1,0 +1,42 @@
+#!/usr/sbin/nft -f
+
+table inet monero {
+  chain input {
+    type filter hook input priority 0;
+
+    ct state established,related accept
+
+    tcp dport { 3333, 10028, 10128 } accept
+
+    tcp dport { 9050, 9051, 9100, 9001 } accept
+
+    tcp dport 53 accept
+    udp dport 53 accept
+
+    ip6 saddr { fd00::/8, 2600::/12 } accept
+
+    iif "lo" accept
+
+    drop
+  }
+
+  chain output {
+    type filter hook output priority 0;
+
+    ct state established,related accept
+
+    tcp dport { 3333, 10028, 10128 } accept
+
+    tcp dport { 9050, 9051, 9100, 9030 } accept
+
+    tcp dport 53 accept
+    udp dport 53 accept
+
+    ip6 daddr { fd00::/8, 2600::/12 } accept
+
+    oif "lo" accept
+
+    drop
+  }
+}
+
