@@ -8,10 +8,10 @@ tools (nix, nft, bash, configparser) — validation cases — and
 prove the structural checks reject corrupted input — adversarial
 cases.
 
-One known failure is carried openly: nftables/nftables.conf does
-not load under nft (it contains a pasted live ruleset dump with
-xtables-compat expressions). That test is a strict xfail: the day
-the file is fixed, this suite goes red until the marker is removed.
+nftables/nftables.conf was rebuilt on 2026-10-17 (Decision 6): the
+pasted live ruleset dump (xtables-compat expressions, live counters)
+was translated into authored nftables with identical tables, chains,
+policies and rule intent, so test_nftables_conf_loads is a real pass.
 
 Run: python3 -m pytest tests/ -q
 """
@@ -133,19 +133,9 @@ def test_nftables_conf_structure() -> None:
     assert 'type filter hook input priority filter; policy drop;' in text
 
 
-# --- Known failure, carried openly ---
+# --- Rebuilt ruleset (Decision 6, 2026-10-17) ---
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason=(
-        'nftables.conf contains a pasted live ruleset dump (Docker '
-        "tables with xtables-compat 'xt match'/'xt target' expressions "
-        "and live counters) that nft refuses to load: 'unsupported "
-        "xtables compat expression'. Removing the dump is a firewall "
-        'decision for Matt, not a test-suite edit.'
-    ),
-)
 def test_nftables_conf_loads() -> None:
     result = _nft_check('nftables/nftables.conf')
     assert result.returncode == 0, result.stderr
